@@ -3,9 +3,9 @@
 class Router
 {
     private $routes;
-    public __construct($routes)
+    public function __construct($routes)
     {
-        $this->routes = $Routes;
+        $this->routes = $routes;
     }
 
     public function resolve($pathInfo)
