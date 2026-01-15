@@ -1,0 +1,5 @@
+docker/db/mysql_data
+src/vendor
+docker/db/db-variables.env
+.env
+src/.env
