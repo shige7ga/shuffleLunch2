@@ -2,12 +2,10 @@
 
 class ShuffleController extends Controller
 {
-    public function run($action)
+    protected function index()
     {
-        $this->$action();
-    }
-    private function index()
-    {
-        echo 'Hello World';
+        return $this->render([
+            'formTitle' => '操作一覧',
+        ]);
     }
 }

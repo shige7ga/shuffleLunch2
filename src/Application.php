@@ -4,10 +4,13 @@ class Application
 {
     private $router;
     private $request;
+    private $response;
+
     public function __construct()
     {
         $this->router = new Router($this->registerRoutes());
-        $this->request = new Request;
+        $this->request = new Request();
+        $this->response = new Response();
     }
 
     public function run()
@@ -16,13 +19,15 @@ class Application
         $controller = $params['controller'];
         $action = $params['action'];
         $this->runAction($controller, $action);
+        $this->response->send();
     }
 
     public function runAction($controllerName, $action)
     {
         $controllerClass = ucfirst($controllerName) . 'Controller';
         $controller = new $controllerClass($this);
-        $controller->run($action);
+        $content = $controller->run($action);
+        $this->response->setContent($content);
     }
 
     private function registerRoutes()
