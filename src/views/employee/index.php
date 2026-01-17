@@ -11,3 +11,8 @@
     <input type="submit" value="<?php echo $formButton ?>">
 </form>
 <h2>社員一覧</h2>
+<ul>
+    <?php foreach ($employees as $employee) : ?>
+        <li><?php echo $employee['emp_no'] . '：' . $employee['emp_name'] ?></li>
+    <?php endforeach ?>
+</ul>

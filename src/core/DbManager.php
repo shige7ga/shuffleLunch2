@@ -7,6 +7,8 @@ $dotenv->load();
 class DbManager
 {
     private $pdo;
+    private $models;
+
     public function __construct(){
         $dbHost = $_ENV['DB_HOST'];
         $dbName = $_ENV['DB_NAME'];
@@ -23,5 +25,13 @@ class DbManager
         } catch (PDOException $e) {
             echo 'DB connect error: ' . $e->getMessasge() . PHP_EOL;
         }
+    }
+
+    public function getModel($modelName)
+    {
+        if (!isset($this->models[$modelName])) {
+            $this->models[$modelName] = new $modelName($this->pdo);
+        }
+        return $this->models[$modelName];
     }
 }

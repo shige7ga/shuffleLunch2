@@ -36,6 +36,7 @@ class Application
     {
         return [
             '/' => ['controller' => 'shuffle', 'action' => 'index'],
+            '/shuffle' => ['controller' => 'shuffle', 'action' => 'create'],
             '/employee' => ['controller' => 'employee', 'action' => 'index'],
         ];
     }
@@ -43,5 +44,10 @@ class Application
     public function getRequest()
     {
         return $this->request;
+    }
+
+    public function getDbManager()
+    {
+        return $this->dbManager;
     }
 }
