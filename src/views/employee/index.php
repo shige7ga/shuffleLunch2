@@ -1,8 +1,8 @@
 <h2><?php echo $formTitle ?></h2>
-<form action="" method="post">
+<form action="/employee/create" method="post">
     <div>
         <label for="empNo">社員番号：</label>
-        <input type="text" id="empNo" name="empNo">
+        <input type="number" id="empNo" name="empNo">
     </div>
     <div>
         <label for="empName">社員名：</label>

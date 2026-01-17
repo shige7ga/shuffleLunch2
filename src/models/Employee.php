@@ -22,4 +22,11 @@ class Employee extends DbModel
         return $groups;
     }
 
+    public function registerEmployee($empNo, $empName)
+    {
+        $sql = 'INSERT INTO employees (emp_no, emp_name) VALUES (:emp_no, :emp_name)';
+        $params = [[':emp_no', $empNo, PDO::PARAM_INT], [':emp_name', $empName, PDO::PARAM_STR]];
+        $this->execute($sql, $params);
+    }
+
 }

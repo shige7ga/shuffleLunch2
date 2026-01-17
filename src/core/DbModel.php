@@ -17,4 +17,19 @@ class DbModel
         }
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function execute($sql, $params)
+    {
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            if ($params) {
+                foreach ($params as $param) {
+                    $stmt->bindparam(...$param);
+                }
+            }
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'エラー発生：' . $e->getMessage() . PHP_EOL;
+        }
+    }
 }
